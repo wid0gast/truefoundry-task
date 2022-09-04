@@ -9,6 +9,7 @@ from sklearn.svm import SVC
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 import spacy
+import uvicorn
 
 app = FastAPI()
 
@@ -18,6 +19,10 @@ loaded_model = pickle.load(open('svm_rbf_1_scaler.pkl', 'rb'))
 class Tweet(BaseModel):
     text: str
 
+@app.get('/')
+def index():
+    return {'message': 'This is the homepage of the API '}
+
 @app.post('/predict')
 async def predict_sentiment(tweet: Tweet):
     data = tweet.dict()
@@ -26,6 +31,9 @@ async def predict_sentiment(tweet: Tweet):
     pred = loaded_model.predict(vect.reshape(1,-1))
 
     if pred == 0:
-        return 'negative'
+        return {'sentiment' : 'negative'}
     else:
-        return 'positive'
+        return {'sentiment' : 'positive'}
+
+if __name__ == '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000, debug=True)
