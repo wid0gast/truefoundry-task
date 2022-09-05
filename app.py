@@ -1,13 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import pickle
-import numpy as np
-import pandas as pd
-from tqdm.notebook import tqdm, trange
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
 import spacy
 import uvicorn
 
