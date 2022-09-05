@@ -12,6 +12,7 @@ cymem==2.0.6
 en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.4.0/en_core_web_md-3.4.0-py3-none-any.whl
 fastapi==0.81.0
 fqdn==1.5.1
+gunicorn==20.1.0
 h11==0.13.0
 httptools==0.4.0
 hupper==1.10.3
